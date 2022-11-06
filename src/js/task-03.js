@@ -12,3 +12,19 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+//Пошук елемента з класом (gallery) та присвоєння його в const (Gallery)
+const galleryEl = document.querySelector('.gallery') 
+console.log(galleryEl)
+//Створення галереї з масиву об'єктів (images)
+//map(), ми можемо перебрати масив об'єктів, 
+//і в колбек - функції повернути значення властивості кожного з них.
+//join("") об'єднує елементи масиву у рядок.
+// У рядку елементи будуть розділені символом або групою символів, 
+//зазначених в ""
+const makeGallery = images
+  .map((img) => `<li><img src="${img.url}" alt= "${img.alt}"></li>`)
+  .join("");
+console.log(makeGallery)
+//Додаємо рядок з HTML-тегами всередині елемента (galleryEl), перед усіма дітьми
+galleryEl.insertAdjacentHTML("afterbegin", makeGallery);
